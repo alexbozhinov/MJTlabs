@@ -3,6 +3,7 @@ package bg.sofia.uni.fmi.mjt.lab3.udemy.account;
 import bg.sofia.uni.fmi.mjt.lab3.udemy.course.Course;
 import bg.sofia.uni.fmi.mjt.lab3.udemy.course.Resource;
 import bg.sofia.uni.fmi.mjt.lab3.udemy.exception.*;
+
 public interface Account {
 
     /**
@@ -27,30 +28,32 @@ public interface Account {
      * Buys the given course for the account.
      *
      * @param course the course which will be bought.
-     * @throws IllegalArgumentException if the account buyer is of type BusinessAccount and course has category which is not among the permitted for this account
-     * @throws InsufficientBalanceException if the account does not have enough funds in its balance.
-     * @throws CourseAlreadyPurchasedException if the course is already purchased for this account.
+     * @throws IllegalArgumentException          if the account buyer is of type BusinessAccount and course has category which is not among the permitted for this account
+     * @throws InsufficientBalanceException      if the account does not have enough funds in its balance.
+     * @throws CourseAlreadyPurchasedException   if the course is already purchased for this account.
      * @throws MaxCourseCapacityReachedException if the account has reached the maximum allowed course capacity.
      */
-    void buyCourse(Course course) throws InsufficientBalanceException, CourseAlreadyPurchasedException, MaxCourseCapacityReachedException;
+    void buyCourse(Course course)
+        throws InsufficientBalanceException, CourseAlreadyPurchasedException, MaxCourseCapacityReachedException;
 
     /**
      * Completes the given resources that belong to the given course provided that the course was previously purchased by this account.
      *
      * @param resourcesToComplete the resources which will be completed.
-     * @param course the course in which the resources will be completed.
-     * @throws IllegalArgumentException if course or resourcesToComplete are null.
+     * @param course              the course in which the resources will be completed.
+     * @throws IllegalArgumentException    if course or resourcesToComplete are null.
      * @throws CourseNotPurchasedException if course is not currently purchased for this account.
-     * @throws ResourceNotFoundException if a certain resource could not be found in the course.
+     * @throws ResourceNotFoundException   if a certain resource could not be found in the course.
      */
-    void completeResourcesFromCourse(Course course, Resource[] resourcesToComplete) throws CourseNotPurchasedException, ResourceNotFoundException;
+    void completeResourcesFromCourse(Course course, Resource[] resourcesToComplete)
+        throws CourseNotPurchasedException, ResourceNotFoundException;
 
     /**
      * Completes the whole course.
      *
      * @param course the course which will be completed.
-     * @param grade the grade with which the course will be completed.
-     * @throws IllegalArgumentException if grade is not in range [2.00, 6.00] or course is null.
+     * @param grade  the grade with which the course will be completed.
+     * @throws IllegalArgumentException    if grade is not in range [2.00, 6.00] or course is null.
      * @throws CourseNotPurchasedException if course is not currently purchased for this account.
      * @throws CourseNotCompletedException if there is a resource in the course which is not completed.
      */

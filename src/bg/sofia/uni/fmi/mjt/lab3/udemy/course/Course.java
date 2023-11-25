@@ -6,7 +6,7 @@ import bg.sofia.uni.fmi.mjt.lab3.udemy.exception.ResourceNotFoundException;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Course implements Completable, Purchasable{
+public class Course implements Completable, Purchasable {
     private String name;
     private String description;
     private double price;
@@ -16,6 +16,7 @@ public class Course implements Completable, Purchasable{
     private boolean completed = false;
 
     private double grade = 0.0;
+
     public Course(String name, String description, double price, Resource[] content, Category category) {
         setName(name);
         setDescription(description);
@@ -45,9 +46,9 @@ public class Course implements Completable, Purchasable{
     }
 
     public void setContent(Resource[] content) {
-        if (content == null){
+        if (content == null) {
             this.content = new Resource[0];
-        }else {
+        } else {
             this.content = content;
         }
     }
@@ -102,14 +103,14 @@ public class Course implements Completable, Purchasable{
      * Completes a resource from the course.
      *
      * @param resourceToComplete the resource which will be completed.
-     * @throws IllegalArgumentException if resourceToComplete is null.
+     * @throws IllegalArgumentException  if resourceToComplete is null.
      * @throws ResourceNotFoundException if the resource could not be found in the course.
      */
     public void completeResource(Resource resourceToComplete) throws ResourceNotFoundException {
-        if (null == resourceToComplete){
+        if (null == resourceToComplete) {
             throw new IllegalArgumentException("The resource is null");
         }
-        if (!Arrays.asList(content).contains(resourceToComplete)){
+        if (!Arrays.asList(content).contains(resourceToComplete)) {
             throw new ResourceNotFoundException("Resource not found in contend");
         }
 
@@ -146,10 +147,10 @@ public class Course implements Completable, Purchasable{
             }
         }
 
-        if (totalResources > 0){
-            return (int)(Math.round(((double)completed / totalResources) * 100));
+        if (totalResources > 0) {
+            return (int) (Math.round(((double) completed / totalResources) * 100));
 
-        }else{
+        } else {
             return 0;
         }
     }

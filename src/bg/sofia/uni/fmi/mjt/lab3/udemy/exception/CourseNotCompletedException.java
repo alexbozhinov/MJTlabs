@@ -1,6 +1,6 @@
 package bg.sofia.uni.fmi.mjt.lab3.udemy.exception;
 
-public class CourseNotCompletedException extends Exception{
+public class CourseNotCompletedException extends Exception {
     public CourseNotCompletedException(String message) {
         super(message);
     }

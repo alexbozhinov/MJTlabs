@@ -8,7 +8,7 @@ import bg.sofia.uni.fmi.mjt.lab3.udemy.exception.*;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class AccountBase implements Account{
+public class AccountBase implements Account {
     private String username;
     private double balance;
     protected AccountType type;
@@ -34,7 +34,7 @@ public class AccountBase implements Account{
 
     @Override
     public void addToBalance(double amount) {
-        if (amount < 0.0){
+        if (amount < 0.0) {
             throw new IllegalArgumentException("Amount less than 0.0");
         }
 
@@ -47,24 +47,25 @@ public class AccountBase implements Account{
     }
 
     @Override
-    public void buyCourse(Course course) throws InsufficientBalanceException, CourseAlreadyPurchasedException, MaxCourseCapacityReachedException {
-        if (null == course){
+    public void buyCourse(Course course)
+        throws InsufficientBalanceException, CourseAlreadyPurchasedException, MaxCourseCapacityReachedException {
+        if (null == course) {
             throw new IllegalArgumentException("Course to buy was null");
         }
 
         double discountedPrice = (1 - type.getDiscount()) * course.getPrice();
 
-        if (discountedPrice > balance){
+        if (discountedPrice > balance) {
             throw new InsufficientBalanceException("Not enough money in balance to buy course");
         }
 
         for (int i = 0; i < courses.length; i++) {
-            if (courses[i].equals(course)){
+            if (courses[i].equals(course)) {
                 throw new CourseAlreadyPurchasedException("Given course was already purchased");
             }
         }
 
-        if (courses.length >= 100){
+        if (courses.length >= 100) {
             throw new MaxCourseCapacityReachedException("Course purchased limit reached");
         }
 
@@ -77,14 +78,15 @@ public class AccountBase implements Account{
     }
 
     @Override
-    public void completeResourcesFromCourse(Course course, Resource[] resourcesToComplete) throws CourseNotPurchasedException, ResourceNotFoundException {
-        if (null == course){
+    public void completeResourcesFromCourse(Course course, Resource[] resourcesToComplete)
+        throws CourseNotPurchasedException, ResourceNotFoundException {
+        if (null == course) {
             throw new IllegalArgumentException("Given course is null");
         }
-        if (null == resourcesToComplete){
+        if (null == resourcesToComplete) {
             throw new IllegalArgumentException("Given resources is null");
         }
-        if (!Arrays.asList(courses).contains(course)){
+        if (!Arrays.asList(courses).contains(course)) {
             throw new CourseNotPurchasedException("Given course is not purchased");
         }
         for (Resource resource : resourcesToComplete) {
@@ -103,17 +105,18 @@ public class AccountBase implements Account{
     }
 
     @Override
-    public void completeCourse(Course course, double grade) throws CourseNotPurchasedException, CourseNotCompletedException {
-        if (null == course){
+    public void completeCourse(Course course, double grade)
+        throws CourseNotPurchasedException, CourseNotCompletedException {
+        if (null == course) {
             throw new IllegalArgumentException("Course is null");
         }
-        if (grade < 2.00 || grade > 6.00){
+        if (grade < 2.00 || grade > 6.00) {
             throw new IllegalArgumentException("Grade not in appropriate interval");
         }
-        if (!Arrays.asList(courses).contains(course)){
+        if (!Arrays.asList(courses).contains(course)) {
             throw new CourseNotPurchasedException("Given course is not purchased");
         }
-        if (!course.isCompleted()){
+        if (!course.isCompleted()) {
             throw new CourseNotCompletedException("Not all resources of the course are completed");
         }
 
@@ -124,13 +127,13 @@ public class AccountBase implements Account{
     @Override
     public Course getLeastCompletedCourse() {
         Course least;
-        if (null == courses[0]){
+        if (null == courses[0]) {
             return null;
-        }else {
+        } else {
             least = courses[0];
-            for (int i = 1; i < courses.length; i++){
-                if (courses[i] != null){
-                    if (courses[i].getCompletionPercentage() < least.getCompletionPercentage()){
+            for (int i = 1; i < courses.length; i++) {
+                if (courses[i] != null) {
+                    if (courses[i].getCompletionPercentage() < least.getCompletionPercentage()) {
                         least = courses[i];
                     }
                 }

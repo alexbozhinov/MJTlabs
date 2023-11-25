@@ -10,11 +10,11 @@ public record CourseDuration(int hours, int minutes) {
             allMinutes += resource.getDuration().minutes();
         }
 
-        return new CourseDuration(allMinutes / 60, allMinutes%60);
+        return new CourseDuration(allMinutes / 60, allMinutes % 60);
     }
 
     public CourseDuration {
-        if (hours < 0 || hours > 24){
+        if (hours < 0 || hours > 24) {
             throw new IllegalArgumentException("More hours than expected");
         }
 

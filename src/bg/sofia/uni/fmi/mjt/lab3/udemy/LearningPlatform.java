@@ -13,7 +13,7 @@ public interface LearningPlatform {
      *
      * @param name the exact name of the course.
      * @throws IllegalArgumentException if name is null or blank.
-     * @throws CourseNotFoundException if course with the specified name is not present in the platform.
+     * @throws CourseNotFoundException  if course with the specified name is not present in the platform.
      */
     Course findByName(String name) throws CourseNotFoundException;
 

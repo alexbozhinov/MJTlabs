@@ -1,6 +1,6 @@
 package bg.sofia.uni.fmi.mjt.lab3.udemy.exception;
 
-public class CourseAlreadyPurchasedException extends Exception{
+public class CourseAlreadyPurchasedException extends Exception {
     public CourseAlreadyPurchasedException(String message) {
         super(message);
     }

@@ -4,7 +4,7 @@ import bg.sofia.uni.fmi.mjt.lab3.udemy.course.duration.ResourceDuration;
 
 import java.util.Objects;
 
-public class Resource implements Completable{
+public class Resource implements Completable {
     private String name;
     private ResourceDuration duration;
 
@@ -51,6 +51,6 @@ public class Resource implements Completable{
 
     @Override
     public int getCompletionPercentage() {
-        return (int)((duration.minutes() / 60.0) * 100);
+        return (int) ((duration.minutes() / 60.0) * 100);
     }
 }

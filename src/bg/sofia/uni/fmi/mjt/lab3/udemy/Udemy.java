@@ -6,7 +6,7 @@ import bg.sofia.uni.fmi.mjt.lab3.udemy.course.Course;
 import bg.sofia.uni.fmi.mjt.lab3.udemy.exception.AccountNotFoundException;
 import bg.sofia.uni.fmi.mjt.lab3.udemy.exception.CourseNotFoundException;
 
-public class Udemy implements LearningPlatform{
+public class Udemy implements LearningPlatform {
     private Account[] accounts;
     private Course[] courses;
 
@@ -15,10 +15,9 @@ public class Udemy implements LearningPlatform{
         setCourses(courses);
     }
 
-
     @Override
     public Course findByName(String name) throws CourseNotFoundException {
-        if (null == name){
+        if (null == name) {
             throw new IllegalArgumentException("Name parameter is null");
         }
         for (Course course : courses) {
@@ -30,8 +29,7 @@ public class Udemy implements LearningPlatform{
         throw new CourseNotFoundException("Course not found");
     }
 
-    private static boolean onlyAlphabets(String str)
-    {
+    private static boolean onlyAlphabets(String str) {
         if (str == null || str.isEmpty()) {
             return false;
         }
@@ -43,20 +41,21 @@ public class Udemy implements LearningPlatform{
         }
         return true;
     }
+
     @Override
     public Course[] findByKeyword(String keyword) {
         Course[] containedCourses = new Course[0];
 
-        if (null == keyword){
+        if (null == keyword) {
             throw new IllegalArgumentException("keyword is null");
         }
-        if (keyword.isBlank()){
+        if (keyword.isBlank()) {
             throw new IllegalArgumentException("keyword is blank");
         }
 
         for (Course course : courses) {
-            if ((course.getName().contains(keyword) && onlyAlphabets(keyword) )
-                || (course.getDescription().contains(keyword) ) && onlyAlphabets(keyword)) {
+            if ((course.getName().contains(keyword) && onlyAlphabets(keyword))
+                || (course.getDescription().contains(keyword)) && onlyAlphabets(keyword)) {
                 Course[] newArray = new Course[containedCourses.length + 1];
                 System.arraycopy(containedCourses, 0, newArray, 0, containedCourses.length);
                 newArray[containedCourses.length] = course;
@@ -71,7 +70,7 @@ public class Udemy implements LearningPlatform{
     public Course[] getAllCoursesByCategory(Category category) {
         Course[] categoryCourses = new Course[0];
 
-        if (null == category){
+        if (null == category) {
             throw new IllegalArgumentException("Category is null");
         }
 
@@ -89,7 +88,7 @@ public class Udemy implements LearningPlatform{
 
     @Override
     public Account getAccount(String name) throws AccountNotFoundException {
-        if (null == name){
+        if (null == name) {
             throw new IllegalArgumentException("Name is null");
         }
 
@@ -104,14 +103,14 @@ public class Udemy implements LearningPlatform{
 
     @Override
     public Course getLongestCourse() {
-        if (courses == null || courses[0] == null){
+        if (courses == null || courses[0] == null) {
             return null;
         }
 
         Course longest = courses[0];
         for (int i = 1; i < courses.length; i++) {
             if ((courses[i].getTotalTime().minutes() + courses[i].getTotalTime().hours() * 60) >
-                longest.getTotalTime().minutes() + longest.getTotalTime().hours() * 60){
+                longest.getTotalTime().minutes() + longest.getTotalTime().hours() * 60) {
                 longest = courses[i];
             }
         }
@@ -121,10 +120,10 @@ public class Udemy implements LearningPlatform{
 
     @Override
     public Course getCheapestByCategory(Category category) {
-        if (null == category){
+        if (null == category) {
             throw new IllegalArgumentException("Category is null");
         }
-        if (null == courses || null == courses[0]){
+        if (null == courses || null == courses[0]) {
             return null;
         }
 
@@ -144,7 +143,7 @@ public class Udemy implements LearningPlatform{
             if (cheapest.getCategory().equals(category) &&
                 courses[i].getCategory().equals(category) &&
                 courses[i].getPrice() < cheapest.getPrice()
-            ){
+            ) {
                 cheapest = courses[i];
             }
         }
@@ -157,9 +156,9 @@ public class Udemy implements LearningPlatform{
     }
 
     public void setAccounts(Account[] accounts) {
-        if (null == accounts){
+        if (null == accounts) {
             this.accounts = new Account[0];
-        }else {
+        } else {
             this.accounts = accounts;
         }
     }
@@ -169,9 +168,9 @@ public class Udemy implements LearningPlatform{
     }
 
     public void setCourses(Course[] courses) {
-        if (null == courses){
+        if (null == courses) {
             this.courses = new Course[0];
-        }else {
+        } else {
             this.courses = courses;
         }
     }
