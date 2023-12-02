@@ -1,7 +1,7 @@
 package bg.sofia.uni.fmi.mjt.lab7.csvprocessor.table;
 
-import bg.sofia.uni.fmi.mjt.lab7.csvprocessor.exceptions.CsvDataNotCorrectException;
 import bg.sofia.uni.fmi.mjt.lab7.csvprocessor.table.column.BaseColumn;
+import bg.sofia.uni.fmi.mjt.lab7.csvprocessor.exceptions.CsvDataNotCorrectException;
 
 import java.io.IOException;
 import java.util.Collection;

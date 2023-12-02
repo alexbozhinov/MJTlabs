@@ -1,11 +1,11 @@
 package bg.sofia.uni.fmi.mjt.lab7.csvprocessor;
 
 import bg.sofia.uni.fmi.mjt.lab7.csvprocessor.exceptions.CsvDataNotCorrectException;
-import bg.sofia.uni.fmi.mjt.lab7.csvprocessor.table.BaseTable;
-import bg.sofia.uni.fmi.mjt.lab7.csvprocessor.table.Table;
 import bg.sofia.uni.fmi.mjt.lab7.csvprocessor.table.printer.ColumnAlignment;
 import bg.sofia.uni.fmi.mjt.lab7.csvprocessor.table.printer.MarkdownTablePrinter;
 import bg.sofia.uni.fmi.mjt.lab7.csvprocessor.table.printer.TablePrinter;
+import bg.sofia.uni.fmi.mjt.lab7.csvprocessor.table.BaseTable;
+import bg.sofia.uni.fmi.mjt.lab7.csvprocessor.table.Table;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
